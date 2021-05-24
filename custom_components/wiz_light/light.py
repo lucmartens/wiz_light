@@ -200,7 +200,9 @@ class WizBulb(LightEntity):
     @property
     def max_mireds(self):
         """Return the warmest color_temp that this light supports."""
-        if self._bulbtype:
+        if self._bulbtype: 
+            if self._bulbtype.name == "ESP03_SHRGB1C_01" or self._bulbtype.name == "ESP14_SHRGB1C_01":
+                return color_utils.color_temperature_kelvin_to_mired(2200)
             return self.kelvin_min_map()
         # fallback
         return color_utils.color_temperature_kelvin_to_mired(2500)
